@@ -42,47 +42,53 @@ data "aws_iam_policy_document" "lambda_deployment" {
   }
 
   # IAM role and policy management for Lambda execution roles
-  statement {
-    sid = "IAMRoleManagement"
-    actions = [
-      "iam:CreateRole",
-      "iam:DeleteRole",
-      "iam:GetRole",
-      "iam:UpdateRole",
-      "iam:PassRole",
-      "iam:TagRole",
-      "iam:UntagRole",
-      "iam:ListRoleTags",
-      "iam:ListInstanceProfilesForRole"
-    ]
-    resources = [
-      "arn:aws:iam::*:role/${var.iam_role_name_pattern}"
-    ]
+  # Only include these permissions when the module creates the role (lambda_iam_role_arn is null)
+  dynamic "statement" {
+    for_each = var.lambda_iam_role_arn == null ? [1] : []
+    content {
+      sid = "IAMRoleManagement"
+      actions = [
+        "iam:CreateRole",
+        "iam:DeleteRole",
+        "iam:GetRole",
+        "iam:UpdateRole",
+        "iam:PassRole",
+        "iam:TagRole",
+        "iam:UntagRole",
+        "iam:ListRoleTags",
+        "iam:ListInstanceProfilesForRole"
+      ]
+      resources = [
+        "arn:aws:iam::*:role/${var.lambda_iam_role_prefix}*"
+      ]
+    }
   }
 
-  # IAM policy management for Lambda execution roles
-  statement {
-    sid = "IAMPolicyManagement"
-    actions = [
-      "iam:CreatePolicy",
-      "iam:DeletePolicy",
-      "iam:GetPolicy",
-      "iam:GetPolicyVersion",
-      "iam:ListPolicyVersions",
-      "iam:CreatePolicyVersion",
-      "iam:DeletePolicyVersion",
-      "iam:AttachRolePolicy",
-      "iam:DetachRolePolicy",
-      "iam:PutRolePolicy",
-      "iam:GetRolePolicy",
-      "iam:DeleteRolePolicy",
-      "iam:ListRolePolicies",
-      "iam:ListAttachedRolePolicies"
-    ]
-    resources = [
-      "arn:aws:iam::*:role/${var.iam_role_name_pattern}",
-      "arn:aws:iam::*:policy/*"
-    ]
+  dynamic "statement" {
+    for_each = var.lambda_iam_role_arn == null ? [1] : []
+    content {
+      sid = "IAMPolicyManagement"
+      actions = [
+        "iam:CreatePolicy",
+        "iam:DeletePolicy",
+        "iam:GetPolicy",
+        "iam:GetPolicyVersion",
+        "iam:ListPolicyVersions",
+        "iam:CreatePolicyVersion",
+        "iam:DeletePolicyVersion",
+        "iam:AttachRolePolicy",
+        "iam:DetachRolePolicy",
+        "iam:PutRolePolicy",
+        "iam:GetRolePolicy",
+        "iam:DeleteRolePolicy",
+        "iam:ListRolePolicies",
+        "iam:ListAttachedRolePolicies"
+      ]
+      resources = [
+        "arn:aws:iam::*:role/${var.lambda_iam_role_prefix}*",
+        "arn:aws:iam::*:policy/*"
+      ]
+    }
   }
 
   # S3 access for Lambda deployment packages

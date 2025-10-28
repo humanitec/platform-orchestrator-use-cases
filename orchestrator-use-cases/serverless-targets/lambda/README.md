@@ -107,13 +107,13 @@ module "lambda_serverless_target" {
 | lambda_memory_size | Amount of memory in MB for Lambda function (128-10240) | `number` | `128` | no |
 | lambda_architectures | Instruction set architecture for Lambda function | `list(string)` | `["x86_64"]` | no |
 | lambda_iam_role_arn | Optional IAM role ARN for Lambda function | `string` | `null` | no |
+| lambda_iam_role_prefix | Prefix for Lambda execution IAM role names when created by module | `string` | `"lambda-role"` | no |
 | lambda_additional_managed_policy_arns | Additional managed IAM policy ARNs for Lambda execution role | `list(string)` | `[]` | no |
 | lambda_additional_tags | Additional tags to apply to Lambda function | `map(string)` | `{}` | no |
 | lambda_enable_function_url | Enable Lambda function URL | `bool` | `true` | no |
 | lambda_function_url_auth_type | Authorization type for Function URL ('NONE' or 'AWS_IAM') | `string` | `"AWS_IAM"` | no |
 | lambda_function_url_cors | CORS configuration for Function URL | `object` | `null` | no |
 | additional_tags | Additional tags to apply to resources | `map(string)` | `{}` | no |
-| iam_role_name_pattern | Pattern for IAM role names that can be managed | `string` | `"lambda-role*"` | no |
 
 ## Outputs
 
@@ -160,7 +160,8 @@ The module creates an IAM policy that grants the ECS runner the following permis
 
 ## Security Considerations
 
-- IAM roles are scoped to the pattern specified in `iam_role_name_pattern` (default: `lambda-role*`)
+- When the module creates IAM roles (`lambda_iam_role_arn` is null), the ECS runner is granted permissions to manage roles matching the `lambda_iam_role_prefix` pattern (default: `lambda-role*`)
+- When using a custom IAM role (`lambda_iam_role_arn` is provided), no IAM role/policy management permissions are granted to the ECS runner
 - S3 bucket access is limited to the specified deployment package bucket
 - Lambda functions have inline policies for accessing project-specific S3 buckets
 - All resources are tagged for tracking and governance

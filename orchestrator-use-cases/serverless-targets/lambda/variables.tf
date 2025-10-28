@@ -121,6 +121,12 @@ variable "lambda_iam_role_arn" {
   default     = null
 }
 
+variable "lambda_iam_role_prefix" {
+  description = "Prefix for Lambda execution IAM role names when roles are created by the module (only used when lambda_iam_role_arn is null)"
+  type        = string
+  default     = "lambda-role"
+}
+
 variable "lambda_additional_managed_policy_arns" {
   description = "List of additional managed IAM policy ARNs to attach to the Lambda execution role"
   type        = list(string)
@@ -167,10 +173,4 @@ variable "additional_tags" {
   description = "Additional tags to apply to resources"
   type        = map(string)
   default     = {}
-}
-
-variable "iam_role_name_pattern" {
-  description = "Pattern for IAM role names that can be managed"
-  type        = string
-  default     = "lambda-role*"
 }
