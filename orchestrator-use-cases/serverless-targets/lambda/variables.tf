@@ -50,6 +50,30 @@ variable "ecs_runner_security_group_ids" {
   default     = []
 }
 
+variable "ecs_runner_id" {
+  description = "The ID of the ECS runner. If not provided, one will be generated using ecs_runner_prefix"
+  type        = string
+  default     = null
+}
+
+variable "ecs_runner_environment" {
+  description = "Plain text environment variables to expose in the ECS runner"
+  type        = map(string)
+  default     = {}
+}
+
+variable "ecs_runner_secrets" {
+  description = "Secret environment variables to expose in the ECS runner. Each value should be a secret or property ARN"
+  type        = map(string)
+  default     = {}
+}
+
+variable "ecs_runner_force_delete_s3" {
+  description = "Force delete the ECS runner S3 state files bucket on destroy even if it's not empty"
+  type        = bool
+  default     = false
+}
+
 variable "oidc_hostname" {
   description = "OIDC hostname for authentication"
   type        = string

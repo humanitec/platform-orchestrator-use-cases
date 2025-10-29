@@ -96,6 +96,10 @@ module "lambda_serverless_target" {
 | env_type_id_prefix | The environment type ID prefix | `string` | `"development"` | no |
 | aws_region | AWS region where resources will be deployed | `string` | `"eu-central-1"` | no |
 | ecs_runner_prefix | Prefix for the ECS runner resources | `string` | `"ecs-runner"` | no |
+| ecs_runner_id | The ID of the ECS runner. If not provided, one will be generated using ecs_runner_prefix | `string` | `null` | no |
+| ecs_runner_environment | Plain text environment variables to expose in the ECS runner | `map(string)` | `{}` | no |
+| ecs_runner_secrets | Secret environment variables to expose in the ECS runner. Each value should be a secret or property ARN | `map(string)` | `{}` | no |
+| ecs_runner_force_delete_s3 | Force delete the ECS runner S3 state files bucket on destroy even if it's not empty | `bool` | `false` | no |
 | lambda_timeout | Default timeout for Lambda functions in seconds | `number` | `100` | no |
 | lambda_module_id_prefix | Prefix for the Lambda module and resource type IDs | `string` | `"lambda-zip"` | no |
 | lambda_name_prefix | Prefix for Lambda function names (supports context variables) | `string` | `"$${context.project_id}"` | no |

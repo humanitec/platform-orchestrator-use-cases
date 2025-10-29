@@ -11,13 +11,17 @@ module "ecs_runner" {
   source = "github.com/humanitec/platform-orchestrator-tf-modules//orchestrator-configuration/runner/serverless-ecs"
 
   region                     = var.aws_region
+  runner_id                  = var.ecs_runner_id
+  runner_id_prefix           = var.ecs_runner_prefix
   existing_ecs_cluster_name  = var.ecs_runner_cluster_name
   subnet_ids                 = var.ecs_runner_subnet_ids
-  runner_id_prefix           = var.ecs_runner_prefix
   security_group_ids         = var.ecs_runner_security_group_ids
   humanitec_org_id           = var.org_id
   oidc_hostname              = var.oidc_hostname
   existing_oidc_provider_arn = var.existing_oidc_provider_arn
+  environment                = var.ecs_runner_environment
+  secrets                    = var.ecs_runner_secrets
+  force_delete_s3            = var.ecs_runner_force_delete_s3
   additional_tags = merge(
     {
       project = local.project_id

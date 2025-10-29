@@ -43,6 +43,24 @@ module "lambda_serverless" {
   ecs_runner_security_group_ids = ["sg-xxxxxxxxxxxxx"]
   ecs_runner_prefix             = "ecs-runner"
 
+  # Optional: Specify a custom ECS runner ID instead of auto-generating one
+  # ecs_runner_id = "my-custom-runner-id"
+
+  # Optional: Pass environment variables to the ECS runner
+  # ecs_runner_environment = {
+  #   LOG_LEVEL = "info"
+  #   DEBUG     = "false"
+  # }
+
+  # Optional: Pass secrets to the ECS runner (ARNs from AWS Secrets Manager or Systems Manager Parameter Store)
+  # ecs_runner_secrets = {
+  #   API_KEY     = "arn:aws:secretsmanager:eu-central-1:123456789012:secret:my-api-key-AbCdEf"
+  #   DB_PASSWORD = "arn:aws:ssm:eu-central-1:123456789012:parameter/db/password"
+  # }
+
+  # Optional: Force delete the S3 bucket used for runner state files on destroy
+  # ecs_runner_force_delete_s3 = false
+
   # OIDC Configuration
   oidc_hostname              = "your-oidc.hostname.dev"
   existing_oidc_provider_arn = "arn:aws:iam::123456789012:oidc-provider/your-oidc.hostname.dev"
