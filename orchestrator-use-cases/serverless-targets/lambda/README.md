@@ -24,10 +24,8 @@ This module sets up the complete infrastructure needed to deploy Lambda function
 ## Prerequisites
 
 - AWS account with appropriate permissions
-- Existing ECS cluster
 - S3 bucket for Lambda deployment packages
 - Platform Orchestrator organization and API access
-- OIDC provider configured for authentication
 
 ## Usage
 
