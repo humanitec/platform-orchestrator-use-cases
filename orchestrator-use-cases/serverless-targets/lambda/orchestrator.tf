@@ -99,7 +99,7 @@ resource "platform-orchestrator_module" "lambda_zip" {
     }
   }
   module_inputs = jsonencode({
-    s3_bucket                       = var.s3_bucket
+    s3_bucket                       = var.lambda_package_s3_bucket
     handler                         = var.lambda_handler
     runtime                         = var.lambda_runtime
     iam_role_arn                    = var.lambda_iam_role_arn

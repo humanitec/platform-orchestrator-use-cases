@@ -31,10 +31,10 @@ run "function_url_enabled" {
   command = plan
 
   variables {
-    org_id             = "test-org"
-    project_id_prefix  = "test-project"
-    env_id             = "test"
-    s3_bucket          = "test-lambda-packages"
+    org_id                   = "test-org"
+    project_id_prefix        = "test-project"
+    env_id                   = "test"
+    lambda_package_s3_bucket = "test-lambda-packages"
 
     ecs_runner_cluster_name       = "test-cluster"
     ecs_runner_subnet_ids         = ["subnet-12345678"]
@@ -62,10 +62,10 @@ run "function_url_disabled" {
   command = plan
 
   variables {
-    org_id             = "test-org"
-    project_id_prefix  = "test-project"
-    env_id             = "test"
-    s3_bucket          = "test-lambda-packages"
+    org_id                   = "test-org"
+    project_id_prefix        = "test-project"
+    env_id                   = "test"
+    lambda_package_s3_bucket = "test-lambda-packages"
 
     ecs_runner_cluster_name       = "test-cluster"
     ecs_runner_subnet_ids         = ["subnet-12345678"]
@@ -88,10 +88,10 @@ run "function_url_public_access" {
   command = plan
 
   variables {
-    org_id             = "test-org"
-    project_id_prefix  = "test-project"
-    env_id             = "test"
-    s3_bucket          = "test-lambda-packages"
+    org_id                   = "test-org"
+    project_id_prefix        = "test-project"
+    env_id                   = "test"
+    lambda_package_s3_bucket = "test-lambda-packages"
 
     ecs_runner_cluster_name       = "test-cluster"
     ecs_runner_subnet_ids         = ["subnet-12345678"]
@@ -115,10 +115,10 @@ run "function_url_with_cors" {
   command = plan
 
   variables {
-    org_id             = "test-org"
-    project_id_prefix  = "test-project"
-    env_id             = "test"
-    s3_bucket          = "test-lambda-packages"
+    org_id                   = "test-org"
+    project_id_prefix        = "test-project"
+    env_id                   = "test"
+    lambda_package_s3_bucket = "test-lambda-packages"
 
     ecs_runner_cluster_name       = "test-cluster"
     ecs_runner_subnet_ids         = ["subnet-12345678"]
@@ -165,10 +165,10 @@ run "invalid_auth_type" {
   command = plan
 
   variables {
-    org_id             = "test-org"
-    project_id_prefix  = "test-project"
-    env_id             = "test"
-    s3_bucket          = "test-lambda-packages"
+    org_id                   = "test-org"
+    project_id_prefix        = "test-project"
+    env_id                   = "test"
+    lambda_package_s3_bucket = "test-lambda-packages"
 
     ecs_runner_cluster_name       = "test-cluster"
     ecs_runner_subnet_ids         = ["subnet-12345678"]

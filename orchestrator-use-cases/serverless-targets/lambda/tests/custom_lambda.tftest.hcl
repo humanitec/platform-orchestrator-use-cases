@@ -31,10 +31,10 @@ run "custom_lambda_runtime" {
   command = plan
 
   variables {
-    org_id             = "test-org"
-    project_id_prefix  = "test-project"
-    env_id             = "test"
-    s3_bucket          = "test-lambda-packages"
+    org_id                   = "test-org"
+    project_id_prefix        = "test-project"
+    env_id                   = "test"
+    lambda_package_s3_bucket = "test-lambda-packages"
 
     ecs_runner_cluster_name       = "test-cluster"
     ecs_runner_subnet_ids         = ["subnet-12345678"]
@@ -75,10 +75,10 @@ run "custom_lambda_architectures" {
   command = plan
 
   variables {
-    org_id             = "test-org"
-    project_id_prefix  = "test-project"
-    env_id             = "test"
-    s3_bucket          = "test-lambda-packages"
+    org_id                   = "test-org"
+    project_id_prefix        = "test-project"
+    env_id                   = "test"
+    lambda_package_s3_bucket = "test-lambda-packages"
 
     ecs_runner_cluster_name       = "test-cluster"
     ecs_runner_subnet_ids         = ["subnet-12345678"]
@@ -101,10 +101,10 @@ run "custom_lambda_iam_policies" {
   command = plan
 
   variables {
-    org_id             = "test-org"
-    project_id_prefix  = "test-project"
-    env_id             = "test"
-    s3_bucket          = "test-lambda-packages"
+    org_id                   = "test-org"
+    project_id_prefix        = "test-project"
+    env_id                   = "test"
+    lambda_package_s3_bucket = "test-lambda-packages"
 
     ecs_runner_cluster_name       = "test-cluster"
     ecs_runner_subnet_ids         = ["subnet-12345678"]
@@ -146,10 +146,10 @@ run "custom_lambda_tags" {
   command = plan
 
   variables {
-    org_id             = "test-org"
-    project_id_prefix  = "test-project"
-    env_id             = "test"
-    s3_bucket          = "test-lambda-packages"
+    org_id                   = "test-org"
+    project_id_prefix        = "test-project"
+    env_id                   = "test"
+    lambda_package_s3_bucket = "test-lambda-packages"
 
     ecs_runner_cluster_name       = "test-cluster"
     ecs_runner_subnet_ids         = ["subnet-12345678"]

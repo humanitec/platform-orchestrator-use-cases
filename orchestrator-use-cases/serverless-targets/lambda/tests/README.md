@@ -23,6 +23,11 @@ The tests are organized into the following files:
   - Tests CORS configuration
   - Tests invalid auth type validation
 
+- **`iam_conditional.tftest.hcl`** - IAM conditional permissions tests
+  - Tests IAM permissions when module creates roles (lambda_iam_role_arn is null)
+  - Tests IAM permissions when custom role is provided
+  - Tests custom IAM role prefix configuration
+
 ## Prerequisites
 
 - Terraform >= 1.8.0
@@ -70,7 +75,9 @@ The test suite covers:
 - ✅ Default values verification
 - ✅ Custom Lambda runtime configurations
 - ✅ Lambda architecture options (x86_64, arm64)
-- ✅ IAM policy configurations
+- ✅ IAM policy configurations (managed and inline)
+- ✅ Conditional IAM role management permissions
+- ✅ Custom IAM role prefix
 - ✅ Resource tagging
 - ✅ Function URL configurations
 - ✅ CORS settings

@@ -68,7 +68,7 @@ variable "lambda_timeout" {
   default     = 100
 }
 
-variable "s3_bucket" {
+variable "lambda_package_s3_bucket" {
   description = "S3 bucket name for Lambda deployment packages"
   type        = string
 }

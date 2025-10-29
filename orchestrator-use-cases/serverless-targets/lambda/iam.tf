@@ -100,8 +100,8 @@ data "aws_iam_policy_document" "lambda_deployment" {
       "s3:ListBucket"
     ]
     resources = [
-      "arn:aws:s3:::${var.s3_bucket}",
-      "arn:aws:s3:::${var.s3_bucket}/*"
+      "arn:aws:s3:::${var.lambda_package_s3_bucket}",
+      "arn:aws:s3:::${var.lambda_package_s3_bucket}/*"
     ]
   }
 }

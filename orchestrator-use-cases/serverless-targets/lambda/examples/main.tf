@@ -48,8 +48,8 @@ module "lambda_serverless" {
   existing_oidc_provider_arn = "arn:aws:iam::123456789012:oidc-provider/your-oidc.hostname.dev"
 
   # Lambda Configuration
-  s3_bucket      = "your-lambda-function-packages"
-  lambda_timeout = 100
+  lambda_package_s3_bucket = "your-lambda-function-packages"
+  lambda_timeout           = 100
 
   # Optional: customize the module/resource type ID
   # lambda_module_id_prefix = "lambda-zip"

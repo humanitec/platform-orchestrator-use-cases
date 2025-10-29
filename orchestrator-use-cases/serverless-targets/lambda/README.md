@@ -55,8 +55,8 @@ module "lambda_serverless_target" {
   existing_oidc_provider_arn = "arn:aws:iam::123456789012:oidc-provider/your-oidc.hostname.dev"
 
   # Lambda Configuration
-  s3_bucket      = "your-lambda-packages-bucket"
-  lambda_timeout = 100
+  lambda_package_s3_bucket = "your-lambda-packages-bucket"
+  lambda_timeout           = 100
 
   # Optional: Additional tags
   additional_tags = {
@@ -94,7 +94,7 @@ module "lambda_serverless_target" {
 | ecs_runner_security_group_ids | List of security group IDs for the ECS runner | `list(string)` | n/a | yes |
 | oidc_hostname | OIDC hostname for authentication | `string` | n/a | yes |
 | existing_oidc_provider_arn | ARN of the existing OIDC provider | `string` | n/a | yes |
-| s3_bucket | S3 bucket name for Lambda deployment packages | `string` | n/a | yes |
+| lambda_package_s3_bucket | S3 bucket name for Lambda deployment packages | `string` | n/a | yes |
 | env_type_id_prefix | The environment type ID prefix | `string` | `"development"` | no |
 | aws_region | AWS region where resources will be deployed | `string` | `"eu-central-1"` | no |
 | ecs_runner_prefix | Prefix for the ECS runner resources | `string` | `"ecs-runner"` | no |
