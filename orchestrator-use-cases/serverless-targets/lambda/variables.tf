@@ -27,9 +27,9 @@ variable "aws_region" {
 }
 
 variable "ecs_runner_prefix" {
-  description = "Prefix for the ECS runner resources"
+  description = "Prefix for the ECS runner resources (used when ecs_runner_cluster_name is null)"
   type        = string
-  default     = "ecs-runner"
+  default     = "ecs-runner-"
 }
 
 variable "ecs_runner_cluster_name" {
@@ -100,7 +100,7 @@ variable "lambda_package_s3_bucket" {
 variable "lambda_module_id_prefix" {
   description = "Prefix for the Lambda module and resource type IDs"
   type        = string
-  default     = "lambda-zip"
+  default     = "lambda-zip-"
 }
 
 variable "lambda_name_prefix" {
@@ -148,7 +148,7 @@ variable "lambda_iam_role_arn" {
 variable "lambda_iam_role_prefix" {
   description = "Prefix for Lambda execution IAM role names when roles are created by the module (only used when lambda_iam_role_arn is null)"
   type        = string
-  default     = "lambda-role"
+  default     = "lambda-role-"
 }
 
 variable "lambda_additional_managed_policy_arns" {

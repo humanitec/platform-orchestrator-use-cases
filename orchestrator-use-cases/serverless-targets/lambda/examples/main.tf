@@ -17,7 +17,6 @@ terraform {
 
 provider "platform-orchestrator" {
   org_id = "your-org-id"
-  # api_url = "https://api.humanitec.io"  # Use default production URL or specify custom
 }
 
 provider "aws" {
@@ -41,7 +40,9 @@ module "lambda_serverless" {
   ecs_runner_cluster_name       = "your-ecs-cluster"
   ecs_runner_subnet_ids         = ["subnet-xxxxxxxxxxxxx"]
   ecs_runner_security_group_ids = ["sg-xxxxxxxxxxxxx"]
-  ecs_runner_prefix             = "ecs-runner"
+
+  # Optional: Prefix for ECS runner resources (used when ecs_runner_cluster_name is null)
+  # ecs_runner_prefix = "ecs-runner-"
 
   # Optional: Specify a custom ECS runner ID instead of auto-generating one
   # ecs_runner_id = "my-custom-runner-id"
@@ -87,9 +88,9 @@ module "lambda_serverless" {
   #   })
   # }
 
-  lambda_runtime      = "provided.al2023"
-  lambda_handler      = "bootstrap"
-  lambda_memory_size  = 128
+  lambda_runtime     = "provided.al2023"
+  lambda_handler     = "bootstrap"
+  lambda_memory_size = 128
   # lambda_architectures = ["arm64"]  # Use ARM architecture instead of x86_64
 
   # Optional: Use a custom IAM role for Lambda

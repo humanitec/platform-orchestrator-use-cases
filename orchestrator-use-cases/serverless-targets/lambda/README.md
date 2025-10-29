@@ -35,9 +35,9 @@ module "lambda_serverless_target" {
 
   # Platform Orchestrator Configuration
   org_id               = "your-org-id"
-  project_id_prefix    = "lambda-project"
+  project_id_prefix    = "lambda-project-"
   env_id               = "dev"
-  env_type_id_prefix   = "development"
+  env_type_id_prefix   = "development-"
 
   # AWS Configuration
   aws_region = "eu-central-1"
@@ -46,7 +46,6 @@ module "lambda_serverless_target" {
   ecs_runner_cluster_name       = "your-ecs-cluster"
   ecs_runner_subnet_ids         = ["subnet-xxxxx"]
   ecs_runner_security_group_ids = ["sg-xxxxx"]
-  ecs_runner_prefix             = "lambda-runner"
 
   # OIDC Configuration
   oidc_hostname              = "your-oidc.hostname.dev"
@@ -93,15 +92,15 @@ module "lambda_serverless_target" {
 | oidc_hostname | OIDC hostname for authentication | `string` | n/a | yes |
 | existing_oidc_provider_arn | ARN of the existing OIDC provider | `string` | n/a | yes |
 | lambda_package_s3_bucket | S3 bucket name for Lambda deployment packages | `string` | n/a | yes |
-| env_type_id_prefix | The environment type ID prefix | `string` | `"development"` | no |
+| env_type_id_prefix | The environment type ID prefix | `string` | `"development-"` | no |
 | aws_region | AWS region where resources will be deployed | `string` | `"eu-central-1"` | no |
-| ecs_runner_prefix | Prefix for the ECS runner resources | `string` | `"ecs-runner"` | no |
+| ecs_runner_prefix | Prefix for the ECS runner resources (used when ecs_runner_cluster_name is null) | `string` | `"ecs-runner-"` | no |
 | ecs_runner_id | The ID of the ECS runner. If not provided, one will be generated using ecs_runner_prefix | `string` | `null` | no |
 | ecs_runner_environment | Plain text environment variables to expose in the ECS runner | `map(string)` | `{}` | no |
 | ecs_runner_secrets | Secret environment variables to expose in the ECS runner. Each value should be a secret or property ARN | `map(string)` | `{}` | no |
 | ecs_runner_force_delete_s3 | Force delete the ECS runner S3 state files bucket on destroy even if it's not empty | `bool` | `false` | no |
 | lambda_timeout | Default timeout for Lambda functions in seconds | `number` | `100` | no |
-| lambda_module_id_prefix | Prefix for the Lambda module and resource type IDs | `string` | `"lambda-zip"` | no |
+| lambda_module_id_prefix | Prefix for the Lambda module and resource type IDs | `string` | `"lambda-zip-"` | no |
 | lambda_name_prefix | Prefix for Lambda function names (supports context variables) | `string` | `"$${context.project_id}"` | no |
 | lambda_additional_inline_policies | Map of additional inline IAM policies for Lambda execution role | `map(string)` | `{}` | no |
 | lambda_runtime | Lambda runtime environment | `string` | `"provided.al2023"` | no |
@@ -109,7 +108,7 @@ module "lambda_serverless_target" {
 | lambda_memory_size | Amount of memory in MB for Lambda function (128-10240) | `number` | `128` | no |
 | lambda_architectures | Instruction set architecture for Lambda function | `list(string)` | `["x86_64"]` | no |
 | lambda_iam_role_arn | Optional IAM role ARN for Lambda function | `string` | `null` | no |
-| lambda_iam_role_prefix | Prefix for Lambda execution IAM role names when created by module | `string` | `"lambda-role"` | no |
+| lambda_iam_role_prefix | Prefix for Lambda execution IAM role names when created by module | `string` | `"lambda-role-"` | no |
 | lambda_additional_managed_policy_arns | Additional managed IAM policy ARNs for Lambda execution role | `list(string)` | `[]` | no |
 | lambda_additional_tags | Additional tags to apply to Lambda function | `map(string)` | `{}` | no |
 | lambda_enable_function_url | Enable Lambda function URL | `bool` | `false` | no |
@@ -162,7 +161,7 @@ The module creates an IAM policy that grants the ECS runner the following permis
 
 ## Security Considerations
 
-- When the module creates IAM roles (`lambda_iam_role_arn` is null), the ECS runner is granted permissions to manage roles matching the `lambda_iam_role_prefix` pattern (default: `lambda-role*`)
+- When the module creates IAM roles (`lambda_iam_role_arn` is null), the ECS runner is granted permissions to manage roles matching the `lambda_iam_role_prefix` pattern (default: `lambda-role-*`)
 - When using a custom IAM role (`lambda_iam_role_arn` is provided), no IAM role/policy management permissions are granted to the ECS runner
 - S3 bucket access is limited to the specified deployment package bucket
 - Lambda functions have inline policies for accessing project-specific S3 buckets
