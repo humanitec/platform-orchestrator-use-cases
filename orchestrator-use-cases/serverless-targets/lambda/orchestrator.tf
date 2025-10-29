@@ -85,7 +85,7 @@ resource "platform-orchestrator_module" "lambda_zip" {
   id            = local.lambda_module_id
   description   = "Lambda function zip package"
   resource_type = platform-orchestrator_resource_type.lambda_zip.id
-  module_source = "github.com/humanitec/platform-orchestrator-tf-modules//orchestrator-module-sources/serverless/lambda?ref=hum-1702-lambda-module-sources"
+  module_source = "git::https://github.com/humanitec/platform-orchestrator-tf-modules//orchestrator-module-sources/serverless/lambda?ref=hum-1702-lambda-module-sources"
 
   module_params = {
     s3_key = {
@@ -99,20 +99,20 @@ resource "platform-orchestrator_module" "lambda_zip" {
     }
   }
   module_inputs = jsonencode({
-    s3_bucket                       = var.lambda_package_s3_bucket
-    handler                         = var.lambda_handler
-    runtime                         = var.lambda_runtime
-    iam_role_arn                    = var.lambda_iam_role_arn
-    architectures                   = var.lambda_architectures
-    timeout_in_seconds              = var.lambda_timeout
-    additional_tags                 = var.lambda_additional_tags
-    memory_size                     = var.lambda_memory_size
-    name_prefix                     = var.lambda_name_prefix
-    additional_managed_policy_arns  = var.lambda_additional_managed_policy_arns
-    additional_inline_policies      = var.lambda_additional_inline_policies
-    enable_function_url             = var.lambda_enable_function_url
-    function_url_auth_type          = var.lambda_function_url_auth_type
-    function_url_cors               = var.lambda_function_url_cors
+    s3_bucket                      = var.lambda_package_s3_bucket
+    handler                        = var.lambda_handler
+    runtime                        = var.lambda_runtime
+    iam_role_arn                   = var.lambda_iam_role_arn
+    architectures                  = var.lambda_architectures
+    timeout_in_seconds             = var.lambda_timeout
+    additional_tags                = var.lambda_additional_tags
+    memory_size                    = var.lambda_memory_size
+    name_prefix                    = var.lambda_name_prefix
+    additional_managed_policy_arns = var.lambda_additional_managed_policy_arns
+    additional_inline_policies     = var.lambda_additional_inline_policies
+    enable_function_url            = var.lambda_enable_function_url
+    function_url_auth_type         = var.lambda_function_url_auth_type
+    function_url_cors              = var.lambda_function_url_cors
   })
 }
 
