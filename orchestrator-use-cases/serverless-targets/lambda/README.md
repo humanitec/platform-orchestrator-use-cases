@@ -110,7 +110,7 @@ module "lambda_serverless_target" {
 | lambda_iam_role_prefix | Prefix for Lambda execution IAM role names when created by module | `string` | `"lambda-role"` | no |
 | lambda_additional_managed_policy_arns | Additional managed IAM policy ARNs for Lambda execution role | `list(string)` | `[]` | no |
 | lambda_additional_tags | Additional tags to apply to Lambda function | `map(string)` | `{}` | no |
-| lambda_enable_function_url | Enable Lambda function URL | `bool` | `true` | no |
+| lambda_enable_function_url | Enable Lambda function URL | `bool` | `false` | no |
 | lambda_function_url_auth_type | Authorization type for Function URL ('NONE' or 'AWS_IAM') | `string` | `"AWS_IAM"` | no |
 | lambda_function_url_cors | CORS configuration for Function URL | `object` | `null` | no |
 | additional_tags | Additional tags to apply to resources | `map(string)` | `{}` | no |

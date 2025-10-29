@@ -88,8 +88,8 @@ module "lambda_serverless" {
   #   Component   = "Backend"
   # }
 
-  # Function URL Configuration
-  lambda_enable_function_url = true
+  # Function URL Configuration (disabled by default)
+  # lambda_enable_function_url = true  # Uncomment to enable function URL
   # lambda_function_url_auth_type = "NONE"  # Make function URL publicly accessible
   # lambda_function_url_cors = {
   #   allow_origins     = ["https://example.com"]

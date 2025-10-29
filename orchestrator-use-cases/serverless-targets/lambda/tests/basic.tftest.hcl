@@ -112,8 +112,8 @@ run "validate_default_values" {
   }
 
   assert {
-    condition     = var.lambda_enable_function_url == true
-    error_message = "Function URL should be enabled by default"
+    condition     = var.lambda_enable_function_url == false
+    error_message = "Function URL should be disabled by default"
   }
 
   assert {

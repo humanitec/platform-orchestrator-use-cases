@@ -142,7 +142,7 @@ variable "lambda_additional_tags" {
 variable "lambda_enable_function_url" {
   description = "Enable Lambda function URL"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "lambda_function_url_auth_type" {
