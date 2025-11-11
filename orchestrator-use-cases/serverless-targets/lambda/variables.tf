@@ -29,7 +29,7 @@ variable "aws_region" {
 variable "ecs_runner_prefix" {
   description = "Prefix for the ECS runner resources (used when ecs_runner_cluster_name is null)"
   type        = string
-  default     = "ecs-runner-"
+  default     = "ecs-runner"
 }
 
 variable "ecs_runner_cluster_name" {
