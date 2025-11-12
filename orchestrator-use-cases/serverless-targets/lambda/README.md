@@ -1,6 +1,6 @@
 # Lambda Serverless Target Module
 
-This Terraform module configures Platform Orchestrator to deploy AWS Lambda functions using an ECS-based serverless runner.
+This Terraform module configures the Platform Orchestrator to deploy AWS Lambda functions using an ECS-based serverless runner.
 
 ## Overview
 
