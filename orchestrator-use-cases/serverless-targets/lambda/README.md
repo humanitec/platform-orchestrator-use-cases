@@ -18,7 +18,6 @@ This module sets up the complete infrastructure needed to deploy Lambda function
 - **IAM Policy Management**: Creates necessary IAM policies for Lambda function lifecycle management
 - **S3 Integration**: Supports Lambda deployment packages stored in S3
 - **Function URL Support**: Optional Lambda function URL configuration
-- **CloudWatch Logging**: Automatic setup for Lambda function logging
 - **Customizable Runtime**: Configurable Lambda runtime and handler settings
 
 ## Prerequisites
@@ -157,7 +156,6 @@ The module creates an IAM policy that grants the ECS runner the following permis
 - Lambda function URL configuration
 - IAM role and policy management for Lambda execution roles
 - S3 access for deployment packages
-- CloudWatch Logs access for Lambda logging
 
 ## Security Considerations
 
