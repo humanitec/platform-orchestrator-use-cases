@@ -19,9 +19,7 @@ Before running this example, ensure you have:
 
 - AWS credentials configured
 - Platform Orchestrator credentials configured
-- An existing ECS cluster
 - An S3 bucket for Lambda deployment packages
-- An OIDC provider configured
 
 ## Usage
 
