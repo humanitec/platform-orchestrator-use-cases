@@ -4,7 +4,7 @@ This Terraform module configures the Platform Orchestrator to deploy AWS Lambda 
 
 ## Overview
 
-This module sets up the complete infrastructure needed to deploy Lambda functions through Platform Orchestrator, including:
+This module sets up the complete infrastructure needed to deploy Lambda functions through the Platform Orchestrator, including:
 
 - Platform Orchestrator project and environment
 - ECS serverless runner for Lambda deployments
