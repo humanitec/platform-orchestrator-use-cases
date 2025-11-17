@@ -311,7 +311,7 @@ terraform destroy -target="module.lambda_serverless.platform-orchestrator_enviro
 tofu destroy -target="module.lambda_serverless.platform-orchestrator_environment.this"
 ```
 
-Then destroy all resources created by this example:
+Then destroy all resources created by this use case:
 
 ```bash
 # When using Terraform
