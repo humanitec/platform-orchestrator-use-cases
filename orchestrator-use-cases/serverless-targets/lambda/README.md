@@ -31,11 +31,11 @@ The setup uses an [ECS runner](https://developer.humanitec.com/platform-orchestr
 
 ## Usage
 
-1. Provide a deployment package S3 bucket
+### 1. Provide a deployment package S3 bucket
 
 If you do not have an S3 bucket to host Lambda deployment packages, create one now via the [AWS console](https://console.aws.amazon.com/s3/buckets), using all default settings.
 
-2. Install the use case setup
+### 2. Install the use case setup
 
 Create a local file `main.tf` and populate it using one the example setups shown below. Fill in all values according to your setup.
 
@@ -235,7 +235,7 @@ tofu init
 tofu apply
 ```
 
-3. Upload a deployment package
+### 3. Upload a deployment package
 
 Upload a deployment package to the S3 bucket.
 
@@ -261,7 +261,7 @@ export PROJECT_ID=$(tofu show -json terraform.tfstate | jq -r '.values.root_modu
 echo $PROJECT_ID
 ```
 
-4. Perform a deployment
+### 4. Perform a deployment
 
 Create a deployment manifest file named `manifest.yaml`:
 
@@ -287,7 +287,7 @@ Deploy the manifest into the project environment created by the use case:
 hctl deploy $PROJECT_ID development manifest.yaml
 ```
 
-5. Validate the result
+### 5. Validate the result
 
 Once the deployment finished, open the [Orchestrator console](https://console.humanitec.dev) and find the project created for this use case in the "Projects" view. Use `echo $PROJECT_ID` to obtain the project ID.
 
