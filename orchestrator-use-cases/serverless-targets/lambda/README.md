@@ -129,7 +129,7 @@ module "lambda_serverless" {
   # AWS Configuration
   aws_region = "eu-central-1"
 
-  # ECS Runner Configuration
+  # Existing ECS Runner Configuration
   ecs_runner_cluster_name       = "your-ecs-cluster"
   ecs_runner_subnet_ids         = ["subnet-xxxxxxxxxxxxx"]
   ecs_runner_security_group_ids = ["sg-xxxxxxxxxxxxx"]
@@ -152,7 +152,7 @@ module "lambda_serverless" {
   #   DB_PASSWORD = "arn:aws:ssm:eu-central-1:123456789012:parameter/db/password"
   # }
 
-  # Optional: Force delete the S3 bucket used for runner state files on destroy
+  # Optional: Do not force delete the S3 bucket used for runner state files on destroy
   # ecs_runner_force_delete_s3 = false
 
   # OIDC Configuration

@@ -196,8 +196,8 @@ run "ecs_runner_default_values" {
   }
 
   assert {
-    condition     = var.ecs_runner_force_delete_s3 == false
-    error_message = "Default ecs_runner_force_delete_s3 should be false"
+    condition     = var.ecs_runner_force_delete_s3 == true
+    error_message = "Default ecs_runner_force_delete_s3 should be true"
   }
 }
 
