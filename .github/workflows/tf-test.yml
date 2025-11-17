@@ -28,6 +28,8 @@ jobs:
           curl -Lo ./terraform-docs.tar.gz https://github.com/terraform-docs/terraform-docs/releases/download/${TERRAFORM_DOCS_RELEASE}/terraform-docs-${TERRAFORM_DOCS_RELEASE}-linux-amd64.tar.gz
           tar -xzf terraform-docs.tar.gz
           chmod +x terraform-docs
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - name: Find and test Terraform modules
         run: |
@@ -35,12 +37,3 @@ jobs:
           .github/scripts/tf-test.sh
         env:
           DO_TF_DOCS: ${{ github.event.pull_request && 'true' || 'false' }}
-
-      - name: Terraform docs
-        uses: terraform-docs/gh-actions@main
-        if: ${{ github.event.pull_request }}
-        with:
-          working-dir: .
-          output-file: README.md
-          output-method: inject
-          git-push: "true"
