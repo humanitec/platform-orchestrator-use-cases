@@ -6,6 +6,7 @@ variable "org_id" {
 variable "project_id_prefix" {
   description = "The Platform Orchestrator project ID prefix"
   type        = string
+  default     = "lambda-project-"
 }
 
 variable "env_type_id_prefix" {
@@ -77,7 +78,7 @@ variable "ecs_runner_force_delete_s3" {
 variable "oidc_hostname" {
   description = "OIDC hostname for authentication"
   type        = string
-  default     = null
+  default     = "oidc.humanitec.dev"
 }
 
 variable "existing_oidc_provider_arn" {
@@ -118,13 +119,13 @@ variable "lambda_additional_inline_policies" {
 variable "lambda_runtime" {
   description = "Lambda runtime environment"
   type        = string
-  default     = "provided.al2023"
+  default     = "nodejs22.x"
 }
 
 variable "lambda_handler" {
   description = "Lambda function handler"
   type        = string
-  default     = "bootstrap"
+  default     = "index.handler"
 }
 
 variable "lambda_memory_size" {

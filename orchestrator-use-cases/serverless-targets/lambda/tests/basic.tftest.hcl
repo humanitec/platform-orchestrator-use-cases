@@ -97,13 +97,13 @@ run "validate_default_values" {
   }
 
   assert {
-    condition     = var.lambda_runtime == "provided.al2023"
-    error_message = "Default Lambda runtime should be provided.al2023"
+    condition     = var.lambda_runtime == "nodejs22.x"
+    error_message = "Default Lambda runtime should be nodejs22.x"
   }
 
   assert {
-    condition     = var.lambda_handler == "bootstrap"
-    error_message = "Default Lambda handler should be bootstrap"
+    condition     = var.lambda_handler == "index.handler"
+    error_message = "Default Lambda handler should be index.handler"
   }
 
   assert {

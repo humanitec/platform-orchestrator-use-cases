@@ -8,7 +8,7 @@ resource "platform-orchestrator_project" "this" {
 ## ECS Runner
 
 module "ecs_runner" {
-  source = "github.com/humanitec/platform-orchestrator-tf-modules//orchestrator-configuration/runner/serverless-ecs"
+  source = "github.com/humanitec-tf-modules/serverless-ecs-orchestrator-runner?ref=v1.1.0"
 
   region                     = var.aws_region
   runner_id                  = var.ecs_runner_id
@@ -89,7 +89,7 @@ resource "platform-orchestrator_module" "lambda_zip" {
   id            = local.lambda_module_id
   description   = "Lambda function zip package"
   resource_type = platform-orchestrator_resource_type.lambda_zip.id
-  module_source = "git::https://github.com/humanitec/platform-orchestrator-tf-modules//orchestrator-module-sources/serverless/lambda?ref=hum-1702-lambda-module-sources"
+  module_source = "git::https://github.com/humanitec/platform-orchestrator-tf-modules//orchestrator-module-sources/serverless/lambda"
 
   module_params = {
     s3_key = {
