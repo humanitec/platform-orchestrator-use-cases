@@ -239,7 +239,7 @@ tofu apply
 
 Upload a deployment package to the S3 bucket.
 
-A sample deployment package is available for download [here](https://raw.githubusercontent.com/humanitec/platform-orchestrator-use-cases/refs/heads/main/orchestrator-use-cases/serverless-targets/lambda/deployment_package/function.zip).
+A sample deployment package containing a simple Node.js application is available for download [here](https://github.com/humanitec/platform-orchestrator-use-cases/raw/refs/heads/main/serverless-targets/lambda/deployment_package/function.zip).
 
 If you are using your own deployment package, make sure the Lambda runtime is set correctly. Refer to the example above to see how to set a different runtime.
 
