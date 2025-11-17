@@ -72,7 +72,7 @@ variable "ecs_runner_secrets" {
 variable "ecs_runner_force_delete_s3" {
   description = "Force delete the ECS runner S3 state files bucket on destroy even if it's not empty"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "oidc_hostname" {
