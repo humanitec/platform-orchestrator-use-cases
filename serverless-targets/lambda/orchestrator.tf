@@ -89,7 +89,7 @@ resource "platform-orchestrator_module" "lambda_zip" {
   id            = local.lambda_module_id
   description   = "Lambda function zip package"
   resource_type = platform-orchestrator_resource_type.lambda_zip.id
-  module_source = "git::https://github.com/humanitec/platform-orchestrator-tf-modules//orchestrator-module-sources/serverless/lambda"
+  module_source = "git::https://github.com/humanitec-tf-modules/serverless-lambda?ref=v1.0.0"
 
   module_params = {
     s3_key = {

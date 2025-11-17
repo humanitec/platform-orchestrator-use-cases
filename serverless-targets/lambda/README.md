@@ -47,7 +47,7 @@ This minimal prerequisites setup will create all AWS infrastructure and provide 
 ```hcl
 # main.tf
 module "lambda_serverless" {
-  source = "github.com/humanitec/platform-orchestrator-use-cases//orchestrator-use-cases/serverless-targets/lambda"
+  source = "github.com/humanitec/platform-orchestrator-use-cases//serverless-targets/lambda"
 
   # Platform Orchestrator Configuration
   org_id = "your-org-id"
@@ -71,7 +71,7 @@ If you already have an OIDC provider configured for `oidc.humanitec.dev`, config
 ```hcl
 # main.tf
 module "lambda_serverless" {
-  source = "github.com/humanitec/platform-orchestrator-use-cases//orchestrator-use-cases/serverless-targets/lambda"
+  source = "github.com/humanitec/platform-orchestrator-use-cases//serverless-targets/lambda"
 
   # Platform Orchestrator Configuration
   org_id = "your-org-id"
@@ -97,7 +97,7 @@ If you are using your own deployment package, configure the proper Lambda runtim
 ```hcl
 # main.tf
 module "lambda_serverless" {
-  source = "github.com/humanitec/platform-orchestrator-use-cases//orchestrator-use-cases/serverless-targets/lambda"
+  source = "github.com/humanitec/platform-orchestrator-use-cases//serverless-targets/lambda"
 
   # Platform Orchestrator Configuration
   org_id = "your-org-id"
@@ -118,7 +118,7 @@ module "lambda_serverless" {
 
 ```hcl
 module "lambda_serverless" {
-  source = "github.com/humanitec/platform-orchestrator-use-cases//orchestrator-use-cases/serverless-targets/lambda"
+  source = "github.com/humanitec/platform-orchestrator-use-cases//serverless-targets/lambda"
 
   # Platform Orchestrator Configuration
   org_id             = "your-org-id"
