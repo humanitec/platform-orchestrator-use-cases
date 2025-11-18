@@ -362,7 +362,7 @@ The module creates an IAM policy that grants the ECS runner the following permis
 ## References
 
 - [Platform Orchestrator Documentation](https://developer.humanitec.com)
-- [Platform Orchestrator Terraform Modules](https://github.com/humanitec/platform-orchestrator-tf-modules)
+- [Platform Orchestrator Terraform Modules](https://github.com/humanitec-tf-modules)
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
