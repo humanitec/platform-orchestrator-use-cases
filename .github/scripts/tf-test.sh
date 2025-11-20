@@ -1,7 +1,13 @@
 #!/bin/bash
-# This script iterates through all directories of the repository to execute Terraform actions.
+# This script iterates through all directories of the repository to execute Terraform/OpenTofu actions.
 # It does so in any directory having a "main.tf" file.
-# Actions are terraform init, fmt, validate, and test
+# The tool (terraform or tofu) must be set via the TF_TOOL environment variable
+# Actions are
+# - ${TF_TOOL} init
+# - ${TF_TOOL} fmt (only iif DO_TF_FORMAT == "true")
+# - ${TF_TOOL} validate
+# - ${TF_TOOL} test
+# - terraform-docs (only if DO_TF_DOCS == "true")
 
 set -e
 
@@ -17,14 +23,18 @@ while IFS= read -r -d '' main_tf_file; do
   
   cd "$GITHUB_WORKSPACE/$dir"
   
-  echo "Initializing terraform in $dir..."
-  terraform init -backend=false
-  echo "Formatting ..."
-  terraform fmt --check --recursive
+  echo "Initializing ${TF_TOOL} in $dir..."
+  ${TF_TOOL} init -backend=false
+
+  if [ "$DO_TF_FORMAT" == "true" ]; then
+    echo "Formatting ..."
+    ${TF_TOOL} fmt --check --recursive
+  fi
+
   echo "Validating ..."
-  terraform validate
+  ${TF_TOOL} validate
   echo "Running tests ..."
-  terraform test
+  ${TF_TOOL} test
   
   if [ "$DO_TF_DOCS" == "true" ]; then
     echo "Running terraform-docs ..."
