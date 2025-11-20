@@ -2,8 +2,17 @@
 
 # Mock provider configuration for tests
 mock_provider "aws" {
-  mock_resource "aws_iam_policy" {}
+  mock_resource "aws_iam_policy" {
+    defaults = {
+      arn = "arn:aws:iam::123456789012:policy/mock-policy"
+    }
+  }
   mock_resource "aws_iam_role_policy_attachment" {}
+  mock_resource "aws_iam_role" {
+    defaults = {
+      arn = "arn:aws:iam::123456789012:role/mock-role"
+    }
+  }
 
   mock_data "aws_iam_policy_document" {
     defaults = {
@@ -20,11 +29,16 @@ mock_provider "platform-orchestrator" {
   mock_resource "platform-orchestrator_module" {}
   mock_resource "platform-orchestrator_module_rule" {}
   mock_resource "platform-orchestrator_runner_rule" {}
+  mock_resource "platform-orchestrator_serverless_ecs_runner" {}
   mock_data "platform-orchestrator_environment_type" {}
 }
 
 mock_provider "random" {
-  mock_resource "random_id" {}
+  mock_resource "random_id" {
+    defaults = {
+      hex = "abc123"
+    }
+  }
 }
 
 run "ecs_runner_with_custom_id" {
