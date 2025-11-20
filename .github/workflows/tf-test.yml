@@ -1,4 +1,4 @@
-name: Terraform validation and test
+name: Terraform/OpenTofu validation and test
 
 on:
   pull_request:
