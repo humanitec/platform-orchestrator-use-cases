@@ -1,4 +1,4 @@
-# Slow Redis (and infrastructure drift detection)
+# Infrastructure drift detection
 
 The Platform Orchestrator can remediate infrastructure drift by detecting resources having drift and re-aligning them with the desired state through a re-deployment.
 
@@ -6,7 +6,7 @@ The Platform Orchestrator can remediate infrastructure drift by detecting resour
 > 
 > The use case implementation on Terraform/OpenTofu is currently being prepared. We are publishing the use case description ahead of time to illustrate the Orchestrator capabilities to interested users.
 
-## Scenario
+## Scenario: slow Redis
 
 Alex the platform engineer is doing a casual sweep through Grafana, most panels look calm and green, but one card stands out in that annoying "I’m not broken but I’m not right either" orange. It’s the `notifications-worker` dashboard. 
 

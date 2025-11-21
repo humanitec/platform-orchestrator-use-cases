@@ -1,4 +1,4 @@
-# Updating environments without breaking anything (rollout management)
+# Rollout management
 
 The Platform Orchestrator can rollout infrastructure updates across your estate in controlled waves, providing full rollout control and progress visibilty.
 
@@ -6,7 +6,7 @@ The Platform Orchestrator can rollout infrastructure updates across your estate 
 > 
 > The use case implementation on Terraform/OpenTofu is currently being prepared. We are publishing the use case description ahead of time to illustrate the Orchestrator capabilities to interested users.
 
-## Scenario
+## Scenario: updating environments without breaking anything
 
 Thursday rolls in with something shiny:
 

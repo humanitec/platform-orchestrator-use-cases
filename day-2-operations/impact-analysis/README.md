@@ -1,4 +1,4 @@
-# Public S3 buckets incident (impact analysis)
+# Impact analysis
 
 The Platform Orchestrator can remediate infrastructure drift by detecting resources having drift and re-aligning them with the desired state through a re-deployment.
 
@@ -6,7 +6,7 @@ The Platform Orchestrator can remediate infrastructure drift by detecting resour
 > 
 > The use case implementation on Terraform/OpenTofu is currently being prepared. We are publishing the use case description ahead of time to illustrate the Orchestrator capabilities to interested users.
 
-## Scenario
+## Scenario: public S3 buckets incident
 
 Midweek rolls around and Alex the platform engineer is checking Grafana's security dashboards to make sure they are not accidentally on the front page of Hacker News. While doing so, he notices a new spike in "publicly accessible resources" flagged by their cloud posture scans.
 
