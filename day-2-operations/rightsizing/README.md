@@ -6,28 +6,11 @@ The Platform Orchestrator can assist in rightsizing infrastructure resources by 
 > 
 > While we are preparing the full use case implementation, you can already see the Platform Orchestrator in action with your own technology stack. [Book a session with us here](https://humanitec.com/schedule-demo).
 
-## Scenario: why is this database so damn big?
+Organizations often encounter situations where infrastructure resources, such as databases, are over-provisioned relative to their actual workload requirements. This leads to unnecessary operational costs and inefficient resource utilization. The Humanitec Platform Orchestrator addresses this challenge by providing a centralized, rule-based orchestration layer that enables proactive rightsizing of resources for optimal cost control.
 
-Friday mornings are supposed to be quiet. Alex the platform engineer opens Grafana to check the weekly cost and utilization dashboards before diving into code reviews.
+Once underutilized or oversized resources are identified, teams can adjust resource parameters such as changing the size class of a database directly within the deployment manifest. The Orchestrator then enforces these changes across all relevant environments, ensuring that the updated configuration is applied consistently and securely.
 
-One widget sticks out immediately:
-
-**"Top 10 Most Expensive Resources Across Production"**
-
-And sitting comfortably at number 2 is the `orders-db` instance, a Postgres database supporting a backend service that hasn’t seen major traffic since Black Friday seven months ago.
-
-But the Grafana throughput graph tells the real story:
-
-- CPU: flatlining at 3 to 5 percent
-- IOPS: basically a heartbeat pattern
-- Storage: 60 percent allocated, but only 25 percent actually used
-- Query latency: stable, no signs of stress
-
-Alex squints at it thinking: "Why is this thing an XXL box? Did someone size this for the apocalypse?"
-
-He reaches out to the application team maintaining the backend service via chat and explains his findings, suggesting a different size class for this database. The app team agree to discuss the idea internally. They get back to Alex a day later, confirming they have adjusted the "size class" from "XXL" to "L" in their database resource request and are now progressing normally through their deployment cadence, using the Platform Orchestrator to rollout the change through their environments.
-
-Just another day later, the change arrives on production and the Orchestrator adjusts the Postgres size. Alex and the app team give thumbs up to each other on the chat, and another resource now makes the "Most expensive" top 10 list.
+This dynamic configuration management approach not only streamlines the process of rightsizing resources but also enforces organizational standards and policies. By automating the rollout of configuration changes, the Orchestrator helps organizations maintain lean resource allocation, reduce costs, and prevent resource sprawl, all while maintaining compliance and operational efficiency. The ability to audit changes and track deployment history further supports governance and transparency in resource management.
 
 ## References
 
