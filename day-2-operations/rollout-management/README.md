@@ -6,39 +6,17 @@ The Platform Orchestrator can rollout infrastructure updates across your estate 
 > 
 > While we are preparing the full use case implementation, you can already see the Platform Orchestrator in action with your own technology stack. [Book a session with us here](https://humanitec.com/schedule-demo).
 
-## Scenario: updating environments without breaking anything
+Platform teams need to evolve shared infrastructure components (such as database operators) without risking widespread outages. The Platform Orchestrator provides a controlled way to roll out new module versions across environments while limiting blast radius and preserving the ability to roll back quickly.
 
-Thursday rolls in with something shiny:
+A typical rollout starts by creating a new version of a module that encapsulates the updated infrastructure behavior (for example, a new Terraform/OpenTofu module version wired via the Orchestrator’s module catalog). The platform team then uses the Orchestrator to apply this version selectively across environments, following a staged progression rather than updating everything at once. Environments can be ordered from lowest-risk to highest-risk (for example, ephemeral and development environments first, then staging, then production), leveraging the Orchestrator’s project/environment structure and promotion capabilities.
 
-A new major version of the Postgres operator drops, promising better performance and nicer autoscaling behavior. Alex the platform engineer wants to try it out, but no way this thing touches production without guardrails.
+Each rollout “wave” is executed as a normal deployment, driven via CLI or CI/CD, which updates the resource graph and regenerates the Terraform/OpenTofu for that environment. Teams can use their existing observability stack (for example, metrics dashboards and alerts) to validate behavior after each wave before proceeding. If issues are detected, the Orchestrator’s rollback capabilities allow reverting a specific environment to a previous working deployment state, using the historic manifest and resource graph and the same module versions that were active at that time — without affecting other environments still on older versions.
 
-This is the perfect moment for a controlled rollout.
+This pattern enables:
 
-Alex heads into the Orchestrator and creates an updated version of the Postgres module that uses the new operator. Instead of deploying it everywhere blindly, Alex sets a clear, staged rollout plan inside the Orchestrator:
-
-1. Update all ephemeral environments first
-2. Then dev
-3. Then staging
-4. And only if all goes well, production
-
-Alex triggers wave 1, updating only the ephemeral environments. As soon as those updates are underway, Alex switches to Grafana to check how the ephemeral environments respond:
-
-- Are latency and error rates normal?
-- Are there connection spikes or weird restarts?
-- Any signs the new operator version changed behavior?
-
-If Grafana shows issues in the ephemeral environments, Alex can immediately switch back to the Orchestrator and:
-
-- Roll back the module version *just for ephemerals*
-- Patch the module
-- Re-run wave 1 safely
-
-If Grafana looks healthy, Alex proceeds to wave 2, updating the dev environments next. Wave by wave, Alex keeps flipping between:
-
-- The Orchestrator to execute the rollout
-- Grafana to observe the impact
-
-This gives Alex total control with minimal blast radius.
+- **Fine-grained control of blast radius** by scoping changes to selected environments or subsets of workloads
+- **Progressive rollout** of new infrastructure versions across the estate, aligned with environment progression practices
+- **Safe experimentation and fast remediation**, through a combination of deployment history, rollback, and repeatable module-based configuration
 
 ## References
 
