@@ -6,17 +6,11 @@ The Platform Orchestrator can remediate infrastructure drift by detecting resour
 > 
 > While we are preparing the full use case implementation, you can already see the Platform Orchestrator in action with your own technology stack. [Book a session with us here](https://humanitec.com/schedule-demo).
 
-## Scenario: slow Redis
+Infrastructure drift occurs when the actual state of infrastructure resources diverges from the intended, declared configuration. This can result from manual changes, failed deployments, or external modifications. The Humanitec Platform Orchestrator is being developed to provide drift detection capabilities that continuously monitor infrastructure and alert platform teams when such divergence is detected.
 
-Alex the platform engineer is doing a casual sweep through Grafana, most panels look calm and green, but one card stands out in that annoying "I’m not broken but I’m not right either" orange. It’s the `notifications-worker` dashboard. 
+When drift is identified, the Orchestrator will notify teams, enabling them to quickly assess and remediate the issue. Remediation can be performed by re-deploying the environment, which realigns the actual state with the approved configuration. This approach helps maintain consistency and reliability across environments, and serves as a critical security feature by detecting unauthorized changes that could introduce vulnerabilities or compliance violations.
 
-The Grafana panel reads: `Job processing P95 latency 38 percent above the threshold.`
-
-However, there is no CPU spike and no traffic surge.
-
-But right next to the latency panel is a little yellow badge that was not there yesterday: `Drift Status: 1 drift detected in this environment (via Humanitec)`
-
-Using a deeplink to the application’s staging environment on Humanitec, Alex can see the drift details on Humanitec too and can remediate it by a re-deployment.
+The Orchestrator’s drift detection ensures that infrastructure remains aligned with organizational standards and policies, supporting operational efficiency and security objectives. Teams can remediate drift rapidly, ensuring their infrastructure stays consistent with the declared configuration through a simple re-deployment process.
 
 ## References
 
