@@ -6,20 +6,11 @@ The Platform Orchestrator can remediate application or infrastructure issues int
 > 
 > While we are preparing the full use case implementation, you can already see the Platform Orchestrator in action with your own technology stack. [Book a session with us here](https://humanitec.com/schedule-demo).
 
-## Scenario: the bad deploy (and the rollback)
+When a deployment causes instability in an application or its dependencies, the Platform Orchestrator allows teams to rapidly restore a previously known good state without manual reconstruction of configs or infrastructure.
 
-Alex the platform engineer is sipping coffee when Grafana suddenly lights up like a crime scene on a Monday morning. The `payments-api` panel is deep red, error rate spiking hard.
+Using the Orchestrator’s deployment history, teams can identify the last successful deployment for a given environment and trigger a rollback against that specific deployment ID. A rollback deployment reuses both the manifest and the resource graph from that earlier deployment and regenerates the Terraform/OpenTofu code with the same module versions that were used at the time, ensuring that application and infrastructure configuration are reverted together in a consistent way.
 
-Alex digs into the Grafana dashboard and sees a recent deploy correlates almost perfectly with the spike.
-
-Alex flips to Humanitec, opens the `payments-api` deployment history on the production env, and sees:
-
-- Application version updated
-- Postgres dependency updated at the same time
-
-This is bad. But Alex just hits “Rollback to previous release”. The Orchestrator restores both the app version and the infra config.
-
-Grafana cools off. The service stabilizes. Coffee resumes.
+The rollback is executed like any other deployment and supports dry run and plan-only mode for safe validation. It appears in the normal deployment history with its own logs and outputs. This lets teams quickly mitigate production issues, restore service health, and maintain a full audit trail of what was changed and when.
 
 ## References
 
