@@ -6,31 +6,16 @@ The Platform Orchestrator can detect infrastructure drift on a resource level an
 > 
 > While we are preparing the full use case implementation, you can already see the Platform Orchestrator in action with your own technology stack. [Book a session with us here](https://humanitec.com/schedule-demo).
 
-## Scenario: public S3 buckets incident
+Rollout management in the context of the Humanitec Platform Orchestrator enables platform teams to safely and efficiently propagate infrastructure changes, such as security patches or configuration updates, across multiple environments. When a misconfiguration is detected in a shared module (for example, a module provisioning S3 buckets with incorrect access controls), the Orchestrator provides the ability to immediately assess the scope and impact of the issue.
 
-Midweek rolls around and Alex the platform engineer is checking Grafana's security dashboards to make sure they are not accidentally on the front page of Hacker News. While doing so, he notices a new spike in "publicly accessible resources" flagged by their cloud posture scans.
+The Orchestrator’s impact analysis tools allow teams to visualize which workloads and environments are currently using the affected module version. This includes detailed insights into which environments are at risk, which are unaffected, and which teams are responsible for each workload. With this visibility, platform teams can:
 
-Wait… what? That number is supposed to be zero. Alex drills into the alert and sees the culprit: The module responsible for provisioning S3 buckets has a misconfiguration. It's setting the default ACL to `public-read`.
+- Identify all affected environments and workloads using the problematic module version
+- Understand the exact scope (blast radius) of required updates, reducing uncertainty and manual investigation
+- Plan and execute targeted rollouts or forced updates, minimizing disruption and ensuring compliance
+- Maintain a clear audit trail of changes and updates across the platform
 
-Some workloads already consumed that module version. Others are on older versions. The blast radius is unclear. Alex introduces the fix in TF to enforce private access, and pushes the change.
-
-Now the big question is:
-
-How many environments are currently using the broken version? Which ones need to be updated?
-
-Alex jumps into the "impact analysis" view on the Platform Orchestrator, where he can see: 
-
-- The workloads relying on the module, and exactly which environments are using it
-- and which teams own those workloads
-
-The snapshot looks something like:
-
-- Two dev environments for Team Atlas using the risky module
-- A staging environment for Team Nova on the same version
-- Four ephemeral environments for Team Mercury, two affected, two not
-- Production environments across all teams unaffected (thankfully using an older, safe version)
-
-The Humanitec Platform Orchestrator visualizes exactly which environments will be updated, which ones are safe, and what the delta looks like. Alex can finally breathe. He understands the scope of changes, and in case of a forced rollout, how much he might potentially break. No guessing. No sleuthing in repos.
+By leveraging these capabilities, the Platform Orchestrator ensures that updates can be rolled out in a controlled and transparent manner, reducing the risk of widespread outages and enabling rapid incident response. This approach eliminates the need for manual repository checks or guesswork, providing a single source of truth for infrastructure state and change management.
 
 ## References
 
