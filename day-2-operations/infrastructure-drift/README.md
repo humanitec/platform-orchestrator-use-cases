@@ -4,7 +4,7 @@ The Platform Orchestrator can remediate infrastructure drift by detecting resour
 
 > ℹ️ **Note**
 > 
-> The use case implementation on Terraform/OpenTofu is currently being prepared. We are publishing the use case description ahead of time to illustrate the Orchestrator capabilities to interested users.
+> While we are preparing the full use case implementation, you can already see the Platform Orchestrator in action with your own technology stack. [Book a session with us here](https://humanitec.com/schedule-demo).
 
 ## Scenario: slow Redis
 

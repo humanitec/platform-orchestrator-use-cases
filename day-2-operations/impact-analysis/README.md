@@ -4,7 +4,7 @@ The Platform Orchestrator can detect infrastructure drift on a resource level an
 
 > ℹ️ **Note**
 > 
-> The use case implementation on Terraform/OpenTofu is currently being prepared. We are publishing the use case description ahead of time to illustrate the Orchestrator capabilities to interested users.
+> While we are preparing the full use case implementation, you can already see the Platform Orchestrator in action with your own technology stack. [Book a session with us here](https://humanitec.com/schedule-demo).
 
 ## Scenario: public S3 buckets incident
 
