@@ -1,6 +1,6 @@
 # Impact analysis
 
-The Platform Orchestrator can remediate infrastructure drift by detecting resources having drift and re-aligning them with the desired state through a re-deployment.
+The Platform Orchestrator can detect infrastructure drift on a resource level and pinpoint the impacted environments for a complete situation assessment.
 
 > ℹ️ **Note**
 > 
