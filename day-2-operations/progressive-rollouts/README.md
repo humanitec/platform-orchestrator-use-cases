@@ -1,6 +1,6 @@
-# Rollout management
+# Progressive rollouts
 
-The Platform Orchestrator can rollout infrastructure updates across your estate in controlled waves, providing full rollout control and progress visibilty.
+The Platform Orchestrator can rollout infrastructure updates gradually across your estate in controlled waves, providing full rollout control and progress visibilty.
 
 > ℹ️ **Note**
 > 
